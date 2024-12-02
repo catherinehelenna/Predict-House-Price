@@ -6,7 +6,13 @@ import joblib
 def prediction_main():
     st.header("Home Price Prediction")
     st.write("This section allows you to predict home prices based on input features.")
-
+    st.subheader("Model specification and performance details.")
+    st.markdown("""
+        Model: `Lasso(alpha=0.0005, random_state=42)`
+        cross-validation: R2-score = 0.892 and MSE = 0.0033
+        testing: R2-score = 0.932 and MSE = $306,898,281
+        Note: MSE for cross-validation is for log-price prediction.
+    """)
     # Load the model with a context manager
     with open("capped_lasso_pipeline.joblib", "rb") as file:
         model = joblib.load(file)
